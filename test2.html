@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<!-- Created with Ai->Canvas Export Plug-In Version 1.3 (Mac)   -->
+<!-- By Mike Swanson (http://blog.mikeswanson.com/)             -->
+
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>test2</title>
+  <script src="Ai2CanvasAnimation.js"></script>
+  <script>
+
+    // Main canvas and context references
+    var canvas;
+    var ctx;
+
+    // Frames per second
+    var fps = 60.0;
+
+    // Animations
+    var animations = [ new circlePath(), new trianglePath(), new squarePath() ];
+
+    function circlePath() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [312.4, 190.9], [312.4, 258.5], [312.4, 326.1], [312.4, 395.8] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.25, 0.25], [0, 0.50, 0.50], [0, 0.75, 0.75], 
+                    [0, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(1.00, 0.00, 1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function trianglePath() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [619.4, 348.9], [619.4, 416.5], [619.4, 484.1], [619.4, 553.8] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.25, 0.25], [0, 0.50, 0.50], [0, 0.75, 0.75], 
+                    [0, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(1.00, 0.00, -1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function squarePath() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [540.4, 268.9], [540.4, 336.5], [540.4, 404.1], [540.4, 473.8] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.25, 0.25], [0, 0.50, 0.50], [0, 0.75, 0.75], 
+                    [0, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(1.00, 0.00, 1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function init() {
+
+      // Set main canvas and context references
+      canvas = document.getElementById("canvas");
+      ctx = canvas.getContext("2d");
+
+      // Start animation clocks
+      animations[0].pathClock.start();
+      animations[1].pathClock.start();
+      animations[2].pathClock.start();
+
+      // Set animation timer
+      setInterval(drawFrame, (1000 / fps));
+    }
+
+    function updateAnimations() {
+
+      // Update animation paths  
+      var animationCount = animations.length;
+      for (var i = 0; i < animationCount; i++) {
+        animations[i].update();
+      }
+    }
+
+    function drawFrame() {
+
+      // Update animations
+      updateAnimations();
+
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      background(ctx);
+
+      ctx.save();
+      ctx.translate(animations[0].x, animations[0].y);
+      circle(ctx);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(animations[1].x, animations[1].y);
+      triangle(ctx);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(animations[2].x, animations[2].y);
+      square(ctx);
+      ctx.restore();
+    }
+
+    function background(ctx) {
+
+      // background/Rectangle
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(960.5, 560.5);
+      ctx.lineTo(0.5, 560.5);
+      ctx.lineTo(0.5, 0.5);
+      ctx.lineTo(960.5, 0.5);
+      ctx.lineTo(960.5, 560.5);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(8, 9, 9)";
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function circle(ctx) {
+
+      // circle/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(66.7, 0.0);
+      ctx.bezierCurveTo(66.7, 32.5, 36.8, 58.9, 0.0, 58.9);
+      ctx.bezierCurveTo(-36.8, 58.9, -66.7, 32.5, -66.7, 0.0);
+      ctx.bezierCurveTo(-66.7, -32.5, -36.8, -58.9, 0.0, -58.9);
+      ctx.bezierCurveTo(36.8, -58.9, 66.7, -32.5, 66.7, 0.0);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(12, 75, 73)";
+      ctx.fill();
+      ctx.strokeStyle = "rgb(246, 248, 248)";
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function triangle(ctx) {
+
+      // triangle/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(24.4, 40.1);
+      ctx.lineTo(-58.0, 40.2);
+      ctx.lineTo(4.3, -39.8);
+      ctx.lineTo(58.1, 40.0);
+      ctx.lineTo(24.4, 40.1);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(12, 18, 72)";
+      ctx.fill();
+      ctx.strokeStyle = "rgb(246, 248, 248)";
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function square(ctx) {
+
+      // square/Rectangle
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(56.7, 53.9);
+      ctx.lineTo(-56.7, 53.9);
+      ctx.lineTo(-56.7, -53.9);
+      ctx.lineTo(56.7, -53.9);
+      ctx.lineTo(56.7, 53.9);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(111, 66, 78)";
+      ctx.fill();
+      ctx.strokeStyle = "rgb(248, 248, 248)";
+      ctx.stroke();
+      ctx.restore();
+    }
+  </script>
+ </head>
+ <body onload="init()">
+   <canvas id="canvas" width="961" height="561"></canvas>
+ </body>
+</html>

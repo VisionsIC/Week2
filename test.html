@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<!-- Created with Ai->Canvas Export Plug-In Version 1.3 (Mac)   -->
+<!-- By Mike Swanson (http://blog.mikeswanson.com/)             -->
+
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>test</title>
+  <script src="Ai2CanvasAnimation.js"></script>
+  <script>
+
+    // Main canvas and context references
+    var canvas;
+    var ctx;
+
+    // Frames per second
+    var fps = 60.0;
+
+    // Animations
+    var animations = [ new cloudsPath5(), new cloudsPath6(), new cloudsPath4(), new cloudsPath3(), new cloudsPath2(), new cloudsPath1() ];
+
+    function cloudsPath5() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [1359.0, 75.5], [1234.3, 75.5], [1109.5, 75.5], [981.0, 75.5] ],
+                    [ [981.0, 75.5], [947.3, 75.5], [913.7, 75.5], [879.0, 75.5] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.14, 0.11], [0, 0.28, 0.22], [0, 0.43, 0.33], 
+                    [0, 0.57, 0.44], [0, 0.71, 0.56], [0, 0.85, 0.67], [0, 0.99, 0.78], 
+                    [1, 0.48, 0.89], [1, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [0.79, 1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(6.00, 0.00, 1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function cloudsPath6() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [-386.4, 233.6], [148.1, 233.7], [148.1, 233.7], [148.1, 233.7] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.03, 0.10], [0, 0.07, 0.20], [0, 0.11, 0.30], 
+                    [0, 0.16, 0.40], [0, 0.21, 0.50], [0, 0.26, 0.60], [0, 0.33, 0.70], 
+                    [0, 0.42, 0.80], [0, 0.54, 0.90], [0, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(6.00, 0.00, 1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function cloudsPath4() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [-301.6, 68.6], [75.0, 76.4], [75.0, 76.4], [75.0, 76.4] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.05, 0.14], [0, 0.11, 0.29], [0, 0.17, 0.43], 
+                    [0, 0.25, 0.57], [0, 0.34, 0.71], [0, 0.48, 0.86], [0, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(6.00, 0.00, 1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function cloudsPath3() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [-342.0, 44.5], [-99.1, 44.5], [143.8, 44.5], [394.0, 44.5] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.07, 0.07], [0, 0.14, 0.14], [0, 0.22, 0.21], 
+                    [0, 0.29, 0.29], [0, 0.36, 0.36], [0, 0.43, 0.43], [0, 0.50, 0.50], 
+                    [0, 0.58, 0.57], [0, 0.65, 0.64], [0, 0.72, 0.71], [0, 0.79, 0.79], 
+                    [0, 0.86, 0.86], [0, 0.93, 0.93], [0, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(6.00, 0.00, 1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function cloudsPath2() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [-351.2, 164.7], [581.9, 163.3], [581.9, 163.3], [581.9, 163.3] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.02, 0.06], [0, 0.04, 0.11], [0, 0.06, 0.17], 
+                    [0, 0.08, 0.22], [0, 0.10, 0.28], [0, 0.13, 0.33], [0, 0.15, 0.39], 
+                    [0, 0.18, 0.44], [0, 0.21, 0.50], [0, 0.24, 0.56], [0, 0.27, 0.61], 
+                    [0, 0.31, 0.67], [0, 0.35, 0.72], [0, 0.39, 0.78], [0, 0.45, 0.83], 
+                    [0, 0.52, 0.89], [0, 0.62, 0.94], [0, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(6.00, 0.00, 1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function cloudsPath1() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [1463.3, 164.7], [672.2, 179.2], [672.2, 179.2], [672.2, 179.2] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.02, 0.07], [0, 0.05, 0.13], [0, 0.07, 0.20], 
+                    [0, 0.10, 0.27], [0, 0.13, 0.33], [0, 0.16, 0.40], [0, 0.19, 0.47], 
+                    [0, 0.22, 0.53], [0, 0.26, 0.60], [0, 0.31, 0.67], [0, 0.36, 0.73], 
+                    [0, 0.42, 0.80], [0, 0.49, 0.87], [0, 0.59, 0.93], [0, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(6.00, 0.00, 1, false, 1, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function init() {
+
+      // Set main canvas and context references
+      canvas = document.getElementById("canvas");
+      ctx = canvas.getContext("2d");
+
+      // Initialize animations
+      sky.alphaClock = new clock(2.00, 0.00, 1, false, 1, linear, 1.0, 1.00, 0.0000);
+
+      // Start animation clocks
+      sky.alphaClock.start();
+      animations[0].pathClock.start();
+      animations[1].pathClock.start();
+      animations[2].pathClock.start();
+      animations[3].pathClock.start();
+      animations[4].pathClock.start();
+      animations[5].pathClock.start();
+
+      // Set animation timer
+      setInterval(drawFrame, (1000 / fps));
+    }
+
+    function updateAnimations() {
+
+      // Update animation clocks
+      updateAllClocks();
+
+      // Update animation paths  
+      var animationCount = animations.length;
+      for (var i = 0; i < animationCount; i++) {
+        animations[i].update();
+      }
+    }
+
+    function drawFrame() {
+
+      // Update animations
+      updateAnimations();
+
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.globalAlpha = sky.alphaClock.value;
+      sky(ctx);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(animations[0].x, animations[0].y);
+      greyCloud2(ctx);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(animations[1].x, animations[1].y);
+      whiteCloud2(ctx);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(animations[2].x, animations[2].y);
+      greyCloud1(ctx);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(animations[3].x, animations[3].y);
+      whiteCloud1(ctx);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(animations[4].x, animations[4].y);
+      whiteCloud3(ctx);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(animations[5].x, animations[5].y);
+      greyCloud3(ctx);
+      ctx.restore();
+    }
+
+    function sky(ctx) {
+
+      // sky/skybg
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(960.0, 560.0);
+      ctx.lineTo(0.0, 560.0);
+      ctx.lineTo(0.0, 0.0);
+      ctx.lineTo(960.0, 0.0);
+      ctx.lineTo(960.0, 560.0);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(187, 246, 243)";
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function greyCloud2(ctx) {
+
+      // greyCloud2/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(18.3, -31.2);
+      ctx.bezierCurveTo(31.6, -31.2, 42.7, -21.3, 44.6, -8.4);
+      ctx.bezierCurveTo(45.1, -8.5, 45.6, -8.5, 46.1, -8.5);
+      ctx.bezierCurveTo(55.3, -8.5, 62.8, -0.7, 63.0, 9.0);
+      ctx.bezierCurveTo(64.5, 8.2, 66.3, 7.7, 68.2, 7.7);
+      ctx.bezierCurveTo(74.1, 7.7, 78.8, 12.5, 78.8, 18.4);
+      ctx.bezierCurveTo(78.8, 24.3, 72.8, 30.7, 66.9, 30.7);
+      ctx.bezierCurveTo(17.0, 30.9, -16.2, 31.4, -66.0, 31.1);
+      ctx.bezierCurveTo(-72.7, 31.1, -78.8, 27.9, -78.8, 21.2);
+      ctx.bezierCurveTo(-78.8, 14.5, -73.4, 9.0, -66.7, 9.0);
+      ctx.bezierCurveTo(-65.0, 9.0, -63.3, 9.4, -61.8, 10.1);
+      ctx.bezierCurveTo(-59.1, 5.6, -54.1, 2.6, -48.5, 2.6);
+      ctx.bezierCurveTo(-46.3, 2.6, -44.1, 3.0, -42.2, 3.9);
+      ctx.bezierCurveTo(-41.2, -3.0, -35.3, -8.2, -28.1, -8.2);
+      ctx.bezierCurveTo(-22.5, -8.2, -17.6, -4.9, -15.3, -0.2);
+      ctx.bezierCurveTo(-13.2, -1.4, -10.8, -2.2, -8.3, -2.4);
+      ctx.bezierCurveTo(-8.3, -3.1, -8.4, -3.8, -8.4, -4.5);
+      ctx.bezierCurveTo(-8.4, -19.2, 3.6, -31.2, 18.3, -31.2);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(229, 229, 229)";
+      ctx.fill();
+      ctx.strokeStyle = "rgb(229, 229, 229)";
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function whiteCloud2(ctx) {
+
+      // whiteCloud2/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(29.3, -59.5);
+      ctx.bezierCurveTo(50.8, -59.5, 68.6, -40.6, 71.6, -16.1);
+      ctx.bezierCurveTo(72.4, -16.1, 73.1, -16.2, 73.9, -16.2);
+      ctx.bezierCurveTo(88.7, -16.2, 100.7, -1.3, 101.0, 17.2);
+      ctx.bezierCurveTo(103.5, 15.6, 106.3, 14.7, 109.4, 14.7);
+      ctx.bezierCurveTo(118.8, 14.7, 126.5, 23.8, 126.5, 35.0);
+      ctx.bezierCurveTo(126.5, 46.3, 116.8, 58.6, 107.4, 58.6);
+      ctx.bezierCurveTo(27.2, 58.9, -26.0, 59.9, -105.9, 59.3);
+      ctx.bezierCurveTo(-116.7, 59.3, -126.5, 53.2, -126.5, 40.4);
+      ctx.bezierCurveTo(-126.5, 27.6, -117.8, 17.2, -107.0, 17.2);
+      ctx.bezierCurveTo(-104.2, 17.2, -101.6, 18.0, -99.2, 19.2);
+      ctx.bezierCurveTo(-94.8, 10.6, -86.9, 4.9, -77.8, 4.9);
+      ctx.bezierCurveTo(-74.2, 4.9, -70.8, 5.8, -67.8, 7.4);
+      ctx.bezierCurveTo(-66.1, -5.7, -56.6, -15.7, -45.1, -15.7);
+      ctx.bezierCurveTo(-36.1, -15.7, -28.3, -9.4, -24.5, -0.4);
+      ctx.bezierCurveTo(-21.2, -2.7, -17.4, -4.3, -13.3, -4.7);
+      ctx.bezierCurveTo(-13.4, -6.0, -13.4, -7.3, -13.4, -8.6);
+      ctx.bezierCurveTo(-13.4, -36.7, 5.7, -59.5, 29.3, -59.5);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(255, 255, 255)";
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function greyCloud1(ctx) {
+
+      // greyCloud1/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(-15.5, -26.4);
+      ctx.bezierCurveTo(-26.8, -26.4, -36.2, -18.0, -37.8, -7.1);
+      ctx.bezierCurveTo(-38.2, -7.2, -38.6, -7.2, -39.0, -7.2);
+      ctx.bezierCurveTo(-46.8, -7.2, -53.2, -0.6, -53.4, 7.7);
+      ctx.bezierCurveTo(-54.7, 6.9, -56.2, 6.5, -57.8, 6.5);
+      ctx.bezierCurveTo(-62.8, 6.5, -66.8, 10.6, -66.8, 15.6);
+      ctx.bezierCurveTo(-66.8, 20.6, -61.7, 26.0, -56.7, 26.0);
+      ctx.bezierCurveTo(-14.4, 26.2, 13.8, 26.6, 55.9, 26.3);
+      ctx.bezierCurveTo(61.6, 26.3, 66.8, 23.6, 66.8, 18.0);
+      ctx.bezierCurveTo(66.8, 12.3, 62.2, 7.7, 56.5, 7.7);
+      ctx.bezierCurveTo(55.0, 7.7, 53.6, 8.0, 52.4, 8.5);
+      ctx.bezierCurveTo(50.1, 4.7, 45.9, 2.2, 41.1, 2.2);
+      ctx.bezierCurveTo(39.2, 2.2, 37.4, 2.6, 35.8, 3.3);
+      ctx.bezierCurveTo(34.9, -2.5, 29.9, -7.0, 23.8, -7.0);
+      ctx.bezierCurveTo(19.1, -7.0, 14.9, -4.2, 13.0, -0.2);
+      ctx.bezierCurveTo(11.2, -1.2, 9.2, -1.9, 7.0, -2.1);
+      ctx.bezierCurveTo(7.1, -2.7, 7.1, -3.2, 7.1, -3.8);
+      ctx.bezierCurveTo(7.1, -16.3, -3.0, -26.4, -15.5, -26.4);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(229, 229, 229)";
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function whiteCloud1(ctx) {
+
+      // whiteCloud1/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(17.7, -30.1);
+      ctx.bezierCurveTo(30.6, -30.1, 41.3, -20.6, 43.2, -8.1);
+      ctx.bezierCurveTo(43.6, -8.2, 44.1, -8.2, 44.5, -8.2);
+      ctx.bezierCurveTo(53.5, -8.2, 60.7, -0.6, 60.9, 8.7);
+      ctx.bezierCurveTo(62.4, 7.9, 64.1, 7.4, 65.9, 7.4);
+      ctx.bezierCurveTo(71.6, 7.4, 76.3, 12.1, 76.3, 17.8);
+      ctx.bezierCurveTo(76.3, 23.5, 70.4, 29.7, 64.7, 29.7);
+      ctx.bezierCurveTo(16.4, 29.9, -15.7, 30.4, -63.8, 30.0);
+      ctx.bezierCurveTo(-70.3, 30.0, -76.3, 27.0, -76.3, 20.5);
+      ctx.bezierCurveTo(-76.3, 14.0, -71.0, 8.7, -64.5, 8.7);
+      ctx.bezierCurveTo(-62.8, 8.7, -61.2, 9.1, -59.8, 9.7);
+      ctx.bezierCurveTo(-57.1, 5.4, -52.4, 2.5, -46.9, 2.5);
+      ctx.bezierCurveTo(-44.8, 2.5, -42.7, 2.9, -40.9, 3.7);
+      ctx.bezierCurveTo(-39.8, -2.9, -34.1, -7.9, -27.2, -7.9);
+      ctx.bezierCurveTo(-21.8, -7.9, -17.0, -4.8, -14.8, -0.2);
+      ctx.bezierCurveTo(-12.8, -1.4, -10.5, -2.2, -8.0, -2.4);
+      ctx.bezierCurveTo(-8.1, -3.0, -8.1, -3.7, -8.1, -4.4);
+      ctx.bezierCurveTo(-8.1, -18.6, 3.4, -30.1, 17.7, -30.1);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(255, 255, 255)";
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function whiteCloud3(ctx) {
+
+      // whiteCloud3/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(63.1, -107.6);
+      ctx.bezierCurveTo(109.2, -107.6, 147.5, -73.5, 154.0, -29.1);
+      ctx.bezierCurveTo(155.7, -29.2, 157.3, -29.3, 159.0, -29.3);
+      ctx.bezierCurveTo(190.7, -29.3, 216.6, -2.3, 217.3, 31.2);
+      ctx.bezierCurveTo(222.6, 28.2, 228.7, 26.5, 235.3, 26.5);
+      ctx.bezierCurveTo(255.6, 26.5, 272.1, 43.1, 272.1, 63.4);
+      ctx.bezierCurveTo(272.1, 83.7, 251.3, 106.1, 231.0, 106.1);
+      ctx.bezierCurveTo(58.5, 106.6, -56.0, 108.3, -227.8, 107.2);
+      ctx.bezierCurveTo(-251.0, 107.2, -272.1, 96.2, -272.1, 73.1);
+      ctx.bezierCurveTo(-272.1, 50.0, -253.4, 31.2, -230.2, 31.2);
+      ctx.bezierCurveTo(-224.2, 31.2, -218.5, 32.5, -213.3, 34.8);
+      ctx.bezierCurveTo(-203.9, 19.2, -186.8, 8.8, -167.4, 8.8);
+      ctx.bezierCurveTo(-159.7, 8.8, -152.4, 10.4, -145.8, 13.4);
+      ctx.bezierCurveTo(-142.1, -10.2, -121.7, -28.3, -97.1, -28.3);
+      ctx.bezierCurveTo(-77.6, -28.3, -60.8, -17.1, -52.8, -0.7);
+      ctx.bezierCurveTo(-45.6, -5.0, -37.4, -7.7, -28.6, -8.4);
+      ctx.bezierCurveTo(-28.8, -10.8, -28.9, -13.2, -28.9, -15.6);
+      ctx.bezierCurveTo(-28.9, -66.4, 12.3, -107.6, 63.1, -107.6);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(255, 255, 255)";
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function greyCloud3(ctx) {
+
+      // greyCloud3/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(50.5, -86.1);
+      ctx.bezierCurveTo(87.5, -86.1, 118.1, -58.8, 123.3, -23.3);
+      ctx.bezierCurveTo(124.6, -23.4, 126.0, -23.5, 127.3, -23.5);
+      ctx.bezierCurveTo(152.7, -23.5, 173.5, -1.9, 174.0, 25.0);
+      ctx.bezierCurveTo(178.3, 22.6, 183.2, 21.2, 188.4, 21.2);
+      ctx.bezierCurveTo(204.7, 21.2, 217.9, 34.5, 217.9, 50.8);
+      ctx.bezierCurveTo(217.9, 67.1, 201.2, 84.9, 185.0, 84.9);
+      ctx.bezierCurveTo(46.9, 85.4, -44.9, 86.7, -182.4, 85.8);
+      ctx.bezierCurveTo(-201.0, 85.8, -217.9, 77.1, -217.9, 58.5);
+      ctx.bezierCurveTo(-217.9, 40.0, -202.9, 25.0, -184.3, 25.0);
+      ctx.bezierCurveTo(-179.5, 25.0, -174.9, 26.0, -170.8, 27.8);
+      ctx.bezierCurveTo(-163.3, 15.4, -149.6, 7.1, -134.0, 7.1);
+      ctx.bezierCurveTo(-127.9, 7.1, -122.0, 8.4, -116.7, 10.7);
+      ctx.bezierCurveTo(-113.8, -8.2, -97.4, -22.7, -77.7, -22.7);
+      ctx.bezierCurveTo(-62.2, -22.7, -48.7, -13.7, -42.3, -0.6);
+      ctx.bezierCurveTo(-36.5, -4.0, -29.9, -6.2, -22.9, -6.8);
+      ctx.bezierCurveTo(-23.1, -8.7, -23.1, -10.6, -23.1, -12.5);
+      ctx.bezierCurveTo(-23.1, -53.2, 9.8, -86.1, 50.5, -86.1);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(229, 229, 229)";
+      ctx.fill();
+      ctx.restore();
+    }
+  </script>
+ </head>
+ <body onload="init()">
+   <canvas id="canvas" width="960" height="560"></canvas>
+ </body>
+</html>
