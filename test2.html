@@ -24,7 +24,7 @@
 
       // Control and anchor points
       this.points = [
-                    [ [312.4, 190.9], [312.4, 258.5], [312.4, 326.1], [312.4, 395.8] ]
+                    [ [312.4, 145.9], [312.4, 213.5], [312.4, 281.1], [312.4, 350.8] ]
                     ];
 
       // Linear motion index
@@ -50,7 +50,7 @@
 
       // Control and anchor points
       this.points = [
-                    [ [619.4, 348.9], [619.4, 416.5], [619.4, 484.1], [619.4, 553.8] ]
+                    [ [619.4, 303.9], [619.4, 371.5], [619.4, 439.1], [619.4, 508.8] ]
                     ];
 
       // Linear motion index
@@ -76,7 +76,7 @@
 
       // Control and anchor points
       this.points = [
-                    [ [540.4, 268.9], [540.4, 336.5], [540.4, 404.1], [540.4, 473.8] ]
+                    [ [540.4, 223.9], [540.4, 291.5], [540.4, 359.1], [540.4, 428.8] ]
                     ];
 
       // Linear motion index
@@ -104,8 +104,12 @@
       canvas = document.getElementById("canvas");
       ctx = canvas.getContext("2d");
 
+      // Initialize animations
+      triangle.rotateClock = new clock(5.00, 0.00, 1, false, 0, linear, 2.0 * Math.PI, 1.00, 0.0000);
+
       // Start animation clocks
       animations[0].pathClock.start();
+      triangle.rotateClock.start();
       animations[1].pathClock.start();
       animations[2].pathClock.start();
 
@@ -114,6 +118,9 @@
     }
 
     function updateAnimations() {
+
+      // Update animation clocks
+      updateAllClocks();
 
       // Update animation paths  
       var animationCount = animations.length;
@@ -139,6 +146,7 @@
 
       ctx.save();
       ctx.translate(animations[1].x, animations[1].y);
+      ctx.rotate(triangle.rotateClock.value);
       triangle(ctx);
       ctx.restore();
 
